@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Draw Line Sample</title>
+<style type="text/css">
+.center {
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	margin-top: 200px;
+	background: #f00;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+</style>
+</head>
+<body>
+
+<!-- Main -->
+<div class="center"></div>
+
+<!-- Load script -->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="jquery.drawline.js"></script>
+
+<script>
+
+// create element
+(function() {
+	var itemsCount = 10;
+	for(var i = 0; i < itemsCount; i++) {
+		var width = Math.round(Math.random() * 50 + 30),
+			eleClass = 'outer',
+			left = Math.abs(Math.round(Math.random() * 1000 + 50) - 100),
+			top = Math.abs(Math.round(Math.random() * 500 + 50) - 100),
+			ele = document.createElement('div');
+		$('body').append(ele);
+		$(ele).addClass(eleClass);
+		$(ele).css({
+			'position': 'absolute',
+			'width': width + 'px',
+			'height': width + 'px',
+			'top': top + 'px',
+			'left': left + 'px',
+			'background': '#328A32',
+			'-webkit-border-radius': width / 2 + 'px',
+			'-moz-border-radius': width / 2 + 'px',
+			'border-radius': width / 2 + 'px',
+		});
+	}
+
+	$.each($('.outer'), function(i) {
+		$.drawline($(this), $('.center'), {lineWidth: 4});
+	});
+	
+})();
+
+</script>
+</body>
+</html>
